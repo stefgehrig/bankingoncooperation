@@ -1,7 +1,4 @@
 # bankingoncooperation
-
-Code and data for reproducing tables, figures and results of the article "Banking on cooperation: An evolutionary analysis of microfinance loan repayment behaviour"
-
 This script creates the tables, figures and summary statistics from the literature review presented in the manuscript:
 
 + Gehrig, S., Mesoudi A., Lamba S. Banking on cooperation: An evolutionary analysis of microfinance loan repayment behaviour.               
