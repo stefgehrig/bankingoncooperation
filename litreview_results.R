@@ -201,7 +201,7 @@ dev.off()
 
 length(unique(df$Reference))                      #40 studies
 length(unique(df$Country))                        #31 countries
-nrow(df)                                          #135 extracted associations, oh which...
+nrow(df)                                          #135 extracted associations, of which...
 apply(df2[,-1], 2, FUN = function(x) sum(x))      #...27 negative
                                                   #...63 non-significant
                                                   #...1 inverted U-shaped
