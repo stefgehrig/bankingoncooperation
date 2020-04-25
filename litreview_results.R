@@ -90,7 +90,7 @@ df_plot$`Category of predictor variable` <- factor(df_plot$`Category of predicto
                       levels = rev(unique(df_plot$`Category of predictor variable`)))
 
 #write
-png("Figure2.png", width = 2150, height = 1000, res = 205)
+png("Figure2.png", width = 2200, height = 1000, res = 205)
 df_plot %>% 
   ggplot(., aes(x    = `Category of predictor variable`,
                 y    = sum,
@@ -100,12 +100,11 @@ df_plot %>%
             aes(
             x     = `Category of predictor variable`,
             y     = ifelse(sum == 0, NA, sum_position),
-            label = paste0(round(perc,0), "%")),
-            color = "white") +
+            label = paste0(round(perc,0), "%"))) +
   coord_flip() +
   theme_minimal(base_size=14) +
   labs(y = "No of. associations with repayment",
-       fill = "Direction (qualitative)") +
+       fill = "Direction of association (qualitative)") +
   theme(
     legend.position = "bottom",
     legend.text = element_text(size = 10),
@@ -115,7 +114,8 @@ df_plot %>%
   scale_fill_manual(values=c("#addd8e", 
                              "#9ecae1", 
                              "lightgrey",
-                             "#fdbb84"))
+                             "#fdbb84"),
+                    guide = guide_legend(reverse = TRUE))
 dev.off()
 
 #########################
