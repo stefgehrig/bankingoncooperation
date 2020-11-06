@@ -1,15 +1,10 @@
-#### code for tables, figures and summary statistics describing
+#### Code for tables, figures and summary statistics describing
 #### the results of the literature review in
 ####
 #### "Banking on cooperation: An evolutionary analysis of microfinance loan repayment behaviour"
 #### Gehrig, S., Mesoudi, A., Lamba, L.
 ####
 #### required data "litreview_results.csv" are supplied in a separate file
-
-# load packages and data---------------------------
-
-#empty environment
-rm(list = ls(all.names = TRUE))
 
 #load libraries and fonts
 library(readr)
@@ -19,7 +14,7 @@ library(zoo)
 library(janitor)
 library(ggplot2)
 library(extrafont)
-# loadfonts(device = "win")
+loadfonts(device = "win")
 library(ggforce)
 
 #import dataset with extracted associations from literature (= Table S1)
@@ -31,7 +26,9 @@ df <- janitor::remove_empty(df)
 #fill NAs in column with category of predictor
 df$`Category of predictor variable` <-  na.locf(df$`Category of predictor variable`, fromLast = FALSE)
 
-# Table S2------------------------------------
+##################
+#### Table S2 ####
+##################
 
 #transform and order dataset
 df %>% group_by(`Category of predictor variable`) %>% 
@@ -59,23 +56,28 @@ df3 <- matrix(paste(round(as.matrix(df3[,2:5]*100,2)),
              ")",
              sep=""),
        nrow=nrow(as.matrix(df2[,2:5])), dimnames=dimnames(as.matrix(df2[,2:5])))
+
 df3 <- as.data.frame(cbind(df2$`Category of predictor variable`, df3))
 names(df3)[1] <- "Category of predictor variable"
 
 #write
 write.csv(df3, "TableS2.csv", row.names = FALSE)
 
-# Summary statistics --------------------------------
+######################################
+#### Summary statistics of review ####
+######################################
 
-length(unique(df$Reference))                      #40 studies
-length(unique(df$Country))                        #31 countries
-nrow(df)                                          #139 extracted associations, of which...
+length(unique(df$Reference))                      #41 studies
+length(unique(df$Country))                        #32 countries
+nrow(df)                                          #142 extracted associations, of which...
 apply(df2[,-1], 2, FUN = function(x) sum(x))      #...29 negative
                                                   #...63 non-significant
                                                   #...2 inverted U-shaped
-                                                  #...45 positive
+                                                  #...48 positive
 
-# Figure 2---------------------------------------------------
+##################
+#### Figure 2 ####
+##################
 
 #transform data for plotting
 df2 %>% 
@@ -85,14 +87,12 @@ df2 %>%
   group_by(`Category of predictor variable`) %>% 
   mutate(perc         = sum/sum(sum)*100,
          sum_position = cumsum(sum) - 0.5 * sum) -> df_plot
+df_plot
 
-#change names of two predictor categories
+#shorten name of one predictor variable
 df_plot$`Category of predictor variable`[
-  df_plot$`Category of predictor variable` == "Personal and business relations between group members"
-] <- "Personal and business relations betw. group members"
-df_plot$`Category of predictor variable`[
-  df_plot$`Category of predictor variable` == "Cultural homogeneity of group"
-] <- "Socio-cultural homogeneity of group"
+  df_plot$`Category of predictor variable` == 
+    "Personal and business relations between group members"] <- "Personal and business relations betw. group members"
 
 #order factors for plotting
 df_plot$eff <- factor(df_plot$eff, ordered = TRUE, 
@@ -126,7 +126,7 @@ df_plot %>%
     legend.position = "bottom",
     legend.text = element_text(size = 10),
     legend.title = element_text(size = 11),
-    #text=element_text(family="Segoe UI")
+    text=element_text(family="Segoe UI"),
     axis.title.x = element_text(vjust = -2),
     axis.title.y = element_text(vjust = 1.5)
   ) +
