@@ -112,7 +112,7 @@ df_plot %>%
                 y    = sum,
                 fill = eff)) + 
   geom_bar(stat = "identity") +
-  geom_text(data = df_plot, size = 3, 
+  geom_text(data = df_plot, size = 3,
             aes(
               x     = `Category of predictor variable`,
               y     = ifelse(sum == 0, NA, sum_position),

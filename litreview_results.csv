@@ -55,7 +55,6 @@ Personal and business relations between group members,pos,Ethiopia,"(Asgedom, 20
 ,neg,Jordan,"(Al-Azzam et al., 2012)"
 Tenure and continuity of group composition,pos,Zambia,"(van Bastelaer and Leathers, 2006)"
 ,pos,Malawi,"(Simtowe et al., 2006)"
-,pos,China,(Chen et al. 2020)
 ,pos,Tanzania,"(Kinyondo and Okurut, 2009)"
 ,nons,USA,"(Anthony, 2005)"
 ,nons,Zambia,"(van Bastelaer and Leathers, 2006)"
@@ -66,6 +65,7 @@ Tenure and continuity of group composition,pos,Zambia,"(van Bastelaer and Leathe
 ,nons,Guatemala,"(Wydick, 1999)"
 ,nons,Sierra Leone,"(Sabin and Reed-Tsochas, 2018)"
 ,nons,Ghana,"(Ayogyam et al., 2014)"
+,neg,China,(Chen et al. 2020)
 ,neg,Malawi,"(Simtowe et al., 2006)"
 ,neg,Bangladesh,"(Godquin, 2004)"
 ,neg,Bangladesh,"(Guttman, 2007)"
