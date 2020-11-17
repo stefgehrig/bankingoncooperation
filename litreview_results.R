@@ -32,10 +32,10 @@ df$`Category of predictor variable` <-  na.locf(df$`Category of predictor variab
 
 #transform and order dataset
 df %>% group_by(`Category of predictor variable`) %>% 
-  summarise("Negative"        = sum(`Effect on repaymentb`=="neg"),      #stands for "negative association"
-            "Non-significant" = sum(`Effect on repaymentb`=="nons"),     #stands for "non-significant association"
-            "Inverted U"      = sum(`Effect on repaymentb`=="curve"),    #stands for "inverted U-shaped association"
-            "Positive"        = sum(`Effect on repaymentb`=="pos")) %>%  #stands for "positive association"  
+  summarise("Negative"        = sum(`Effect on repayment`=="neg"),      #stands for "negative association"
+            "Non-significant" = sum(`Effect on repayment`=="nons"),     #stands for "non-significant association"
+            "Inverted U"      = sum(`Effect on repayment`=="curve"),    #stands for "inverted U-shaped association"
+            "Positive"        = sum(`Effect on repayment`=="pos")) %>%  #stands for "positive association"  
   mutate("Total N" = Negative+`Non-significant`+`Inverted U`+Positive) -> df2
 df2 <- df2[order(match(df2$`Category of predictor variable`, unique(df$`Category of predictor variable`))),]
 
@@ -74,6 +74,7 @@ apply(df2[,-1], 2, FUN = function(x) sum(x))      #...29 negative
                                                   #...63 non-significant
                                                   #...2 inverted U-shaped
                                                   #...48 positive
+
 
 ##################
 #### Figure 2 ####
