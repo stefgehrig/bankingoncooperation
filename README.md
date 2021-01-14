@@ -1,5 +1,5 @@
 # bankingoncooperation
-This script creates the tables, figures and summary statistics from the literature review presented in the manuscript:
+This script creates the tables, figures and summary statistics from the literature review presented in the article:
 
 + Gehrig, S., Mesoudi, A., & Lamba, S. (2020). Banking on cooperation: An evolutionary analysis of microfinance loan repayment behaviour. *Evolutionary Human Sciences*. DOI: https://doi.org/10.1017/ehs.2020.64 
 
